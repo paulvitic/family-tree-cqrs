@@ -1,0 +1,32 @@
+group 'energy.getfresh'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+    compile 'ch.qos.logback:logback-classic:1.2.3',
+            'com.h2database:h2:1.4.191',
+            'org.hibernate:hibernate-core:5.2.17.Final',
+            'org.flywaydb:flyway-core:5.0.7',
+            'org.apache.velocity:velocity:1.7',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    testCompile 'junit:junit:4.12',
+            'org.mockito:mockito-core:2.15.0',
+            'guru.nidi:jdepend:2.9.5'
+
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'energy.getfresh.homework.FamilyTreeApp'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
