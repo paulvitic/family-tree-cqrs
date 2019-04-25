@@ -59,8 +59,6 @@ public class FamilyMember extends Person {
             FamilyMember child = new FamilyMember(id, name, childGender, father, this);
             this.childrenIfMother.add(child);
 
-
-
             this.events.add(new ChildAdded(spouse.name(), name(), name, gender));
         }
     }

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Daughter extends Relative {
 
 
-    protected Daughter(FamilyMember familyMember) {
+    Daughter(FamilyMember familyMember) {
         super(familyMember);
     }
 

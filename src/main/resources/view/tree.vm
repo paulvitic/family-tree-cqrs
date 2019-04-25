@@ -46,7 +46,7 @@
         target: "#graph",
         debug: true,
         height: 800,
-        width: 1200
+        width: 1600
     });
 </script>
 </body>

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class PaternalUncle extends Relative {
 
-    protected PaternalUncle(FamilyMember familyMember) {
+    PaternalUncle(FamilyMember familyMember) {
         super(familyMember);
     }
 

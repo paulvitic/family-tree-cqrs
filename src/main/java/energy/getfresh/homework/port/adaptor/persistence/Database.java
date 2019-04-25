@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.Flyway;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -22,7 +23,7 @@ public class Database {
 
     public static Session session(){
         if (sessionFactory==null) {
-            init();
+            initSessionFactory();
         }
         return sessionFactory.openSession();
     }
@@ -46,7 +47,7 @@ public class Database {
         return getNext("event_seq");
     }
 
-    private static void init() {
+    private static void initSessionFactory() {
         try {
             StandardServiceRegistryBuilder registryBuilder =
                     new StandardServiceRegistryBuilder();
@@ -81,15 +82,16 @@ public class Database {
 
     private static Integer getNext(String sequence){
         Session session = sessionFactory.openSession();
+        Transaction tx = session.getTransaction();
         try {
-            session.getTransaction().begin();
+            tx.begin();
             Number id = (Number) session.createNativeQuery("select nextval('"+ sequence +"')").uniqueResult();
-            session.getTransaction().commit();
+            tx.commit();
             return id.intValue();
         } catch (Exception e) {
-            if (session.getTransaction().getStatus() == TransactionStatus.ACTIVE
-                    || session.getTransaction().getStatus() == TransactionStatus.MARKED_ROLLBACK) {
-                session.getTransaction().rollback();
+            if (tx.getStatus() == TransactionStatus.ACTIVE
+                    || tx.getStatus() == TransactionStatus.MARKED_ROLLBACK) {
+                tx.rollback();
             }
             throw new IllegalArgumentException(e);
         } finally {

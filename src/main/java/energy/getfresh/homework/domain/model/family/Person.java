@@ -14,7 +14,6 @@ public class Person extends Identified {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-
     Person() {}
 
     Person(Integer id, String name, Gender gender) {

@@ -25,13 +25,12 @@ public class Dialog {
 
     private final FamilyMemberService familyService;
 
-    public Dialog(FamilyMemberService familyService, String defaultFilePath, String defaultFile){
+    private Dialog(FamilyMemberService familyService, String defaultFilePath, String defaultFile){
         super();
         this.defaultFilePath = defaultFilePath;
         this.defaultFile = defaultFile;
         this.familyService = familyService;
     }
-
 
     public Dialog(FamilyMemberService familyService){
         this(familyService, "./input/", "input.txt");
