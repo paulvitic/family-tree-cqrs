@@ -1,4 +1,4 @@
-group 'energy.getfresh'
+group 'net.vitic.cqrs.familytree'
 
 apply plugin: 'java'
 
@@ -24,7 +24,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'energy.getfresh.homework.FamilyTreeApp'
+        attributes 'Main-Class' : 'net.vitic.cqrs.familytree.FamilyTreeApp'
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }

@@ -92,8 +92,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # distribution directories
-db
 log
-view
-input
 

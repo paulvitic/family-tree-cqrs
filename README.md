@@ -1,5 +1,5 @@
-Getfresh Energy homework
-========================
+CQRS Example 
+============
 
 ## How to build
 
@@ -11,7 +11,7 @@ Execute gradle build command:
 > gradle clean build
 ```
 
-Built package **homework.jar** will be available at *[source dirctory]/build/libs*
+Built package **familytree.jar** will be available at *[source dirctory]/build/libs*
 
 
 ## How to run
@@ -19,7 +19,7 @@ Built package **homework.jar** will be available at *[source dirctory]/build/lib
 Run project by
 
 ```
-> java -jar homework.jar
+> java -jar familytree.jar
 ```
 
 ### Sample dialog
